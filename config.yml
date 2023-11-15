@@ -1,0 +1,66 @@
+---
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: Installing dnf and epel-release
+    yum:
+      name:
+        - epel-release
+        - dnf
+    when: ansible_distribution == "CentOS"
+
+
+  - name: Installing installations dependencies
+    yum:
+      name:
+        - wget
+      state: latest
+    when: ansible_distribution == "CentOS"
+
+  - name: Dpkg fixing in Ubuntu Servers
+    command: dpkg --configure -a
+    when: ansible_distribution == "Ubuntu"
+
+
+- hosts: elastic_centos
+  tags: elastic_centos, elastic_both
+  become: true
+  roles:
+    - elastic_centos
+
+- hosts: elastic_ubuntu
+  tags: elastic_ubuntu, elastic_both
+  become: true
+  roles:
+    - elastic_ubuntu
+
+- hosts: nagios_centos
+  tags: nagios_centos
+  become: true
+  roles:
+    - nagios_centos
+
+- hosts: igp_centos
+  tags: igp_centos, igp_both
+  become: true
+  roles:
+    - igp_centos
+
+- hosts: igp_ubuntu
+  tags: igp_ubuntu, igp_both
+  become: true
+  roles:
+    - igp_ubuntu
+
+- hosts: lamp_centos
+  tags: lamp_centos, lamp_both
+  become: true
+  roles:
+    - lamp_centos
+
+- hosts: lamp_ubuntu
+  tags: lamp_ubuntu, lamp_both
+  become: true
+  roles:
+    - lamp_ubuntu

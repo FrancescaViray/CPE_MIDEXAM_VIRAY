@@ -1,0 +1,21 @@
+[elastic_centos]
+192.168.56.102 ansible_user=viray
+
+[elastic_ubuntu]
+127.0.1.1 ansible_user=viray
+
+[igp_centos]
+192.168.56.102 ansible_user=viray
+
+[igp_ubuntu]
+127.0.1.1 ansible_user=viray
+
+[lamp_centos]
+192.168.56.102 ansible_user=viray
+
+[lamp_ubuntu]
+127.0.1.1 ansible_user=viray
+
+[nagios_centos]
+192.168.56.102 ansible_user=viray
+
